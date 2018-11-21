@@ -44,7 +44,8 @@ Solution:
 	Uncle				
 	Significant Other				
 
-	Now a 1 in the 1st column and 1st cell means that Mum gets a CD. Similarly if 1 is assigned to the 3rd row and 2nd column then, 	Grandma gets a Socks.
+	Now a 1 in the 1st column and 1st cell means that Mum gets a CD. Similarly if 1 is assigned to the 3rd row and 2nd column then,
+	Grandma gets a Socks.
 	Using this logic, I have generated the following solutions:
 	Solution 1.1:
 	#Using Constraints 1-12
