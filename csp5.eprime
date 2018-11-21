@@ -1,0 +1,51 @@
+language ESSENCE' 1.0
+
+letting p_cd = 10
+letting p_socks = 7
+letting p_choc = 4 
+letting p_cof = 12
+letting budget =52
+
+$ encode in a matrix for implicit constraint
+find M: matrix indexed by [int(1.. 8), int(1.. 4)] of int(0,1)
+
+such that 
+
+	$1 all people have exactly one present
+	forAll row : int(1..8) .
+		(sum i:int(1..4) . M[row,i]) = 1,
+	
+	$3 Your mum, brother, and significant other must get different presents
+	forAll col : int(1..4) .
+		(sum i: int(1,2,8). M[i,col]) <=1,
+		
+	$4 Your uncle and cousin must get different presents
+	forAll col : int(1..4) .
+		(sum i: int(5,7). M[i,col]) <=1,
+
+	$5 Your grandparents must get different presents
+	forAll col : int(1..4) .
+		(sum i: int(3,4). M[i,col]) <=1,
+
+	$6 different presents for mum and uncle
+	forAll col : int(1..4) .
+		(sum i: int(1,7). M[i,col]) <=1,
+		
+	$7 No chocolates for mum, brother, significant other, or grandpa
+	forAll i:int(1,2,4,8).
+		M[i,3] !=1,
+	
+	$8 Your cousin must not get socks
+	M[5,2] !=1,
+	
+	$9 There is only one coffee mill in the shop
+	(sum i: int(1..8). M[i,4]) <= 1,
+	
+	$10 There are no more than 2 CDs in the shop
+	(sum i: int(1..8). M[i,1]) <= 2,
+
+	$11 There are no more than 4 Chocolate Boxes in the shop
+	(sum i: int(1..8). M[i,3]) <= 4,
+	
+	$12 Brother must get a CD
+	M[2,1]=1
